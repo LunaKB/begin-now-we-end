@@ -23,13 +23,15 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven("https://repo.spring.io/milestone")
 }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
-
+    implementation("com.tinder.statemachine:statemachine:0.2.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("tools.jackson.module:jackson-module-kotlin")
+    implementation(fileTree("lib") { include("*.jar") })
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
@@ -39,7 +41,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    implementation(fileTree("lib") { include("*.jar") })
 }
 
 kotlin {
